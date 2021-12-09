@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link rel="stylesheet" href="css/sample.css">
+<title>クイズ</title>
+</head>
+<body>
+
+<header>
+    <h1>クイズ</h1>
+</header>
+
+<main>
+  <p id="quest">ここに問題が出題されます</p>
+  <p>
+    <input type="radio" name="toi" value="1"><span id="toi1">選択肢１</span>
+    <input type="radio" name="toi" value="2"><span id="toi2">選択肢２</span>
+    <input type="radio" name="toi" value="3"><span id="toi3">選択肢３</span>
+    
+  </p>
+</main>
+
+<footer>問目</footer>
+<script>
+//ここから記述領域［START］
+
+  //以下に配列を記述してください。
+  //問題文[配列]
+  const qs = [
+  "通るときには閉まって、通らないときには開いているものは何？",
+  "話すことがとても好きな道具は何？",
+  "世界の真ん中にいる虫は何？",
+  "食べると物が投げられなくなる野菜は何？",
+  "いつも少しだけ笑っているお店って何のお店？",
+  "どんなゲームをしても必ず負けてしまう人の職業は何？"
+];
+    
+  //回答選択肢[多重配列]
+const toi = [
+  ["踏み切り", "洗濯機", "冷蔵庫"], 
+  ["スプーン", "シャベル", "しゃもじ"], 
+  ["てんとう虫", "カマキリ", "蚊"],
+  ["トマト","ナス","ほうれん草"],
+  ["薬屋","八百屋","本屋"],
+  ["警察","料理人","歯医者"]
+];
+    
+  //答え[配列]
+ const ans = [1,2,3];
+
+  //1.最初の問題文＆回答選択肢＆回答値を設定
+ let i = 0;
+ $("#quest").text( qs[i] );
+ $("#toi1").text(toi[i][0]);
+ $("#toi2").text(toi[i][1]);
+ $("#toi3").text(toi[i][2]);
+　$("#toi4").text(toi[i][2]);
+　$("#toi5").text(toi[i][0]);
+ $("#toi6").text(toi[i][2]);
+
+  $("[name=toi]").on("click", function () {
+    const v = $(this).val();
+    if (ans[i] == v) {
+      $("h1").text("正解！");
+    } else {
+      $("h1").text("不正解");
+    }
+  
+i++;
+    $("#quest").text(qs[i]);
+    $("#toi1").text(toi[i][0]);
+    $("#toi2").text(toi[i][1]);
+    $("#toi3").text(toi[i][2]);
+    $("#toi4").text(toi[i][2]);
+    $("#toi5").text(toi[i][0]);
+    $("#toi6").text(toi[i][2]);
+
+  });
+
+
+
+    
